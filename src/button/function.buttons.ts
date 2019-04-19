@@ -1,44 +1,49 @@
 import { FunctionButton } from "./function.button";
-import { Modes } from "../mode/modes";
-import { SingleModeFunction, CombinedModeFunction } from "../mode/mode.function";
+import { ModeInit } from "../graphic/mode/mode-init";
+import { ModeFunction } from "../graphic/mode/mode.function";
+import { ActiveModeIndicatorBuilder } from "./active.mode.indicator.builder";
 
 export class FunctionButtons {
     buttons: FunctionButton[] = [];
 
-    constructor(modes: Modes){
+    constructor(private modeIndicatorBuilder: ActiveModeIndicatorBuilder, modes: ModeInit){
         this.buttons = [
-            new FunctionButton(document.querySelector("[cal-func-cos]"), "cos", modes,
-                [
-                    new SingleModeFunction(modes.sndMode, "cos⁻¹"), 
-                    new SingleModeFunction(modes.hypMode, "cosh"),
-                    new SingleModeFunction(modes.radMode, "cosr")
-                ],
-                [
-                    new CombinedModeFunction(modes.sndHypMode, "cosh⁻¹"),
-                    new CombinedModeFunction(modes.sndRadMode, "cosr⁻¹"),
-                    new CombinedModeFunction(modes.sndHypRadMode, "coshr⁻¹"),
 
+            new FunctionButton(document.querySelector("[cal-op-square]"), this.modeIndicatorBuilder, "x²",
+                [new ModeFunction(modes.sndMode, "cos⁻¹")]
+            ),
+
+
+            new FunctionButton(document.querySelector("[cal-func-cos]"), this.modeIndicatorBuilder, "cos",
+                [
+                    new ModeFunction(modes.sndMode, "cos⁻¹"), 
+                    new ModeFunction(modes.hypMode, "cosh"),
+                    new ModeFunction(modes.radMode, "cosr"),
+                    new ModeFunction(modes.sndHypMode, "cosh⁻¹"),
+                    new ModeFunction(modes.sndRadMode, "cosr⁻¹"),
+                    new ModeFunction(modes.sndHypRadMode, "coshr⁻¹"),
                 ]
             ),
             
 
-            new FunctionButton(document.querySelector("[cal-func-sin]"), "sin", modes, 
+            new FunctionButton(document.querySelector("[cal-func-sin]"), this.modeIndicatorBuilder, "sin", 
                 [
-                    new SingleModeFunction(modes.sndMode, "sin⁻¹"), 
-                    new SingleModeFunction(modes.hypMode, "sinh"),
-                    new SingleModeFunction(modes.radMode, "sinr")
-                ],
-                [
-                    new CombinedModeFunction(modes.sndHypMode, "sinh⁻¹"),
-                    new CombinedModeFunction(modes.sndRadMode, "sinr⁻¹"),
-                    new CombinedModeFunction(modes.sndHypRadMode, "sinhr⁻¹"),
-                    
+                    new ModeFunction(modes.sndMode, "sin⁻¹"), 
+                    new ModeFunction(modes.hypMode, "sinh"),
+                    new ModeFunction(modes.radMode, "sinr"),
+                    new ModeFunction(modes.radHypMode, "sinhr"),
+                    new ModeFunction(modes.sndHypMode, "sinh⁻¹"),
+                    new ModeFunction(modes.sndRadMode, "sinr⁻¹"),
+                    new ModeFunction(modes.sndHypRadMode, "sinhr⁻¹"),
                 ]
             ),
 
-             new FunctionButton(document.querySelector("[cal-func-tan]"), "tan", modes, 
-                [new SingleModeFunction(modes.sndMode, "tan⁻¹"), new SingleModeFunction(modes.hypMode, "tanh")],
-                [new CombinedModeFunction(modes.sndHypMode, "tanh⁻¹")]
+             new FunctionButton(document.querySelector("[cal-func-tan]"), this.modeIndicatorBuilder, "tan", 
+                [
+                    new ModeFunction(modes.sndMode, "tan⁻¹"), 
+                    new ModeFunction(modes.hypMode, "tanh"),
+                    new ModeFunction(modes.sndHypMode, "tanh⁻¹")
+                ]
             ),
         ]
     }

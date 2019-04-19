@@ -1,10 +1,6 @@
 import { Button} from "./button/button";
-import { Modes } from "./mode/modes";
-import { HypButton } from "./mode/button/hyp.button";
-import { RadianButton } from "./mode/button/radian.button";
-import { SndButton } from "./mode/button/snd.button";
-import { StatButton } from "./mode/button/stat.button";
-import { ModeButton } from "./mode/button/mode.button";
+import { ModeInit } from "./graphic/mode/mode-init";
+import { ModeButton } from "./graphic/mode/mode.button";
 
 export class CalculatorKeyboard {
     radiansModeButton = document.querySelector(".radians-mode-button") as HTMLButtonElement;
@@ -14,12 +10,12 @@ export class CalculatorKeyboard {
     operatorsButtons = document.querySelectorAll("[cal-op]") as NodeListOf<HTMLButtonElement>;
 
     modeButtons: ModeButton[] = [];
-    constructor(private modes: Modes){
+    constructor(private modes: ModeInit){
         this.modeButtons = [
-            new ModeButton(modes.hypMode, document.querySelector("[cal-hyp-mode]")),
-            new ModeButton(modes.radMode, document.querySelector("[cal-rad-mode]")),
-            new ModeButton(modes.sndMode, document.querySelector("[cal-snd-mode]")),
-            new ModeButton(modes.statMode, document.querySelector("[cal-stat-mode]"))
+            new ModeButton(modes.hypSingleMode, document.querySelector("[cal-hyp-mode]")),
+            new ModeButton(modes.radSingleMode, document.querySelector("[cal-rad-mode]")),
+            new ModeButton(modes.sndSingleMode, document.querySelector("[cal-snd-mode]")),
+            new ModeButton(modes.statSingleMode, document.querySelector("[cal-stat-mode]"))
         ]
     }
 

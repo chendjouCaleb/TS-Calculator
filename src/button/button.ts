@@ -1,18 +1,49 @@
 import { ReplaySubject } from "rxjs";
-import { Modes } from "../mode/modes";
-import { SingleMode } from "../mode/single.mode";
+import { ActiveModeIndicatorBuilder } from "./active.mode.indicator.builder";
+import { ActiveModeIndicator } from "./active.mode.indicator";
+import { SingleMode } from "../graphic/mode/single-mode";
 
 export abstract class Button{
     onClick = new ReplaySubject();
+    activeModeIndicators: ActiveModeIndicator[] = [];
+    /**
+     * HTML element that contains HTML modes indicators
+     */
+    activeModesIndicatorContainer: HTMLSpanElement;
+    buttonTextContainer: HTMLSpanElement;
+    singleModes: SingleMode[] = [];
+    activeSingleModes: SingleMode[] = [];
+    text: string;
 
-    constructor(public element: HTMLButtonElement){
-        this.element.addEventListener("click", e => this.onClick.next(e));
-        this.init();
-        this.render();
+    constructor(public view: HTMLButtonElement, protected modeIndicatorBuilder:  ActiveModeIndicatorBuilder){
+        this.view.addEventListener("click", e => this.onClick.next(e));
     }
 
-    public abstract init(): any;
-    public abstract render(): any;
+
+    initActiveModeIndicatorContainer(){
+        this.activeModesIndicatorContainer = document.createElement("span");
+        this.activeModesIndicatorContainer.className = "cal-btn-mode";
+        this.view.appendChild(this.activeModesIndicatorContainer);
+    }
+
+    initButtonTextContainer(){
+        let element = document.createElement("span");
+        element.style.transitionDuration = ".3";
+        element.className = "cal-btn-text";
+        this.buttonTextContainer = element;
+        this.view.append(element);
+    }
+
+    setActiveModeIndicators(){
+        this.singleModes.forEach(mode => {
+            this.activeModeIndicators.push(this.modeIndicatorBuilder.build(mode));
+        });
+    }
+
+    appendActiveModeIndicatorView(){
+        this.activeModeIndicators.forEach(indicator => 
+            this.activeModesIndicatorContainer.appendChild(indicator.view));
+    }
 
 }
 

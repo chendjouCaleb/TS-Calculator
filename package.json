@@ -4,9 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "test": "jest --verbose",
+    "test-watch": "jest --verbose --watchAll"
   },
   "dependencies": {
+    "@everest/collections": "file:../../Lab/Everest4TS/Collections",
     "rxjs": "^6.3.2",
     "ts-loader": "^5.3.1",
     "typescript": "^3.2.2",
@@ -14,5 +17,9 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/jest": "^24.0.0",
+    "jest": "^24.1.0",
+    "ts-jest": "^23.10.5"
+  }
 }

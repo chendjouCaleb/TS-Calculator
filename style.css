@@ -2,6 +2,24 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.menu{
+    /*background: #FFF;*/
+    display: none;
+    list-style-type: none;
+    border: 1px solid #999;
+    display: inline-block;
+    padding: 0;
+    position: absolute;
+    transform: translateY(20px);
+    transition: transform .2s, left .1s, top .1s;
+}
+.menu li{
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+}
+.menu li:hover{
+    background: #EEEEEE;
+}
 .calculator{
     width: 500px;
     margin: 0 auto;

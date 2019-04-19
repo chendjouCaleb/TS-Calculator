@@ -2,21 +2,18 @@ import { Evaluator } from "./evaluator";
 import { isExpressionKey } from "./util";
 import { CalculatorInput } from "./calculator.input";
 import { Calculator } from "./calculator";
+import {Tooltip} from "./tooltip";
+import {ContextMenu} from "./context-menu";
 
-let ev = new Evaluator("cos(90)+sin(180)+5");
-new Evaluator("");
-new Evaluator("1*10+12+32-4");
-new Evaluator("17.36/10+45");
-new Evaluator("+17.36+45");
-new Evaluator("-17.36+45");
-new Evaluator(".36+45");
-new Evaluator("(.363)+45");
-new Evaluator("10^2+45");
-new Evaluator("3!+45");
+Tooltip.bind("button[title]");
 
-new Evaluator("PI+45");
-new Evaluator("10E+47");
-new Evaluator("3cos(90)+E");
+let documentContextMenu = <HTMLElement> document.querySelector("#document-context-menu");
+let editorContextMenu = <HTMLElement> document.querySelector("#editor-context-menu");
+let editor = <HTMLElement> document.querySelector("#editor");
+
+new ContextMenu(document.body, documentContextMenu);
+new ContextMenu(editor, editorContextMenu);
+console.log(document)
 
 let input = document.getElementById("calculator-input-field");
 let resultDiv = document.getElementById("result");

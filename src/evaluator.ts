@@ -1,7 +1,6 @@
-import { Factorial, combinaison, applyFunction } from "./function";
+import { Factorial, applyFunction } from "./function";
 import { Variable } from "./variable";
 import { throwTokenError, isLetter } from "./util";
-import { webSocket } from "rxjs/webSocket"
 
 export class Evaluator {
     private depth = 0;
