@@ -1,12 +1,12 @@
 import { FunctionButton } from "./function.button";
-import { ModeInit } from "../graphic/mode/mode-init";
+import { ModeConfig } from "../graphic/mode/mode-config";
 import { ModeFunction } from "../graphic/mode/mode.function";
 import { ActiveModeIndicatorBuilder } from "./active.mode.indicator.builder";
 
 export class FunctionButtons {
     buttons: FunctionButton[] = [];
 
-    constructor(private modeIndicatorBuilder: ActiveModeIndicatorBuilder, modes: ModeInit){
+    constructor(private modeIndicatorBuilder: ActiveModeIndicatorBuilder, modes: ModeConfig){
         this.buttons = [
 
             new FunctionButton(document.querySelector("[cal-op-square]"), this.modeIndicatorBuilder, "x²",

@@ -7,6 +7,7 @@ export class ContextMenu{
 
         this.target.addEventListener("contextmenu", (e: MouseEvent) => {
             e.preventDefault();
+            e.stopPropagation();
             if(this.isActive){
                 this.hide();
                 this.show(e)

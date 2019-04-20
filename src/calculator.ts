@@ -1,7 +1,7 @@
 import { CalculatorInput } from "./calculator.input";
 import {  TRIGONOMETRY_MODE} from "./graphic/mode/mode";
 import { CalculatorKeyboard } from "./calculator.keyboard";
-import { ModeInit } from "./graphic/mode/mode-init";
+import { ModeConfig } from "./graphic/mode/mode-config";
 import { FunctionButtons } from "./button/function.buttons";
 import { ActiveModeIndicatorBuilder } from "./button/active.mode.indicator.builder";
 
@@ -10,7 +10,7 @@ export class Calculator{
 
     inputField:CalculatorInput;
 
-    modes: ModeInit;
+    modes: ModeConfig;
 
     keybord: CalculatorKeyboard;
 
@@ -20,7 +20,7 @@ export class Calculator{
     
     initialize(){
         this.inputField = new CalculatorInput();
-        this.modes = new ModeInit();
+        this.modes = new ModeConfig();
         this.activeModeIndicatorBuilder = new ActiveModeIndicatorBuilder();
 
         this.keybord = new CalculatorKeyboard(this.modes);

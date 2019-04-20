@@ -9,5 +9,5 @@ module.exports = {
     testMatch: [
       '**/tests/**/*.test.(ts|js)'
     ],
-    testEnvironment: 'node'
+    testEnvironment: 'jsdom'
   }

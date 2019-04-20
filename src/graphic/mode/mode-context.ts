@@ -52,7 +52,7 @@ export class ModeContext {
         if (this.singleModes.contains(mode)) {
             return;
         }
-        if (this.modes.exists(m => m.name === mode.name)) {
+        if (this.singleModes.exists(m => m.name === mode.name)) {
             throw new ElementlreadyExistsError("Un autre mode existe déjà avec la clé renseignée.")
         }
 
@@ -69,7 +69,7 @@ export class ModeContext {
             return;
         }
 
-        if (this.modes.exists(m => m.name === mode.name)) {
+        if (this.combinedModes.exists(m => m.name === mode.name)) {
             throw new ElementlreadyExistsError("Un autre mode existe déjà avec la clé renseignée.")
         }
 

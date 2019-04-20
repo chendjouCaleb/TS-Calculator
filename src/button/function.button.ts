@@ -1,11 +1,11 @@
 import { Button } from "./button";
 import { SingleMode } from "../graphic/mode/single-mode";
-import { ModeInit } from "../graphic/mode/mode-init";
+import { ModeConfig } from "../graphic/mode/mode-config";
 import { ModeFunction } from "../graphic/mode/mode.function";
 import { Mode } from "../graphic/mode/mode";
-import { ArrayUtils } from "../array.utils";
 import { ActiveModeIndicator } from "./active.mode.indicator";
 import { ActiveModeIndicatorBuilder } from "./active.mode.indicator.builder";
+import {Arrays} from "@everest/collections";
 
 /**
  * @author Chendjou Fotsing Caleb
@@ -79,7 +79,7 @@ export class FunctionButton extends Button{
                 this.updateViewText();
             });
             mode.onBlur.subscribe(() => {
-                this.activeSingleModes =  ArrayUtils.remove(this.activeSingleModes, mode);
+                Arrays.remove(this.activeSingleModes, mode);
                 this.updateViewText();
             });
         });
@@ -95,7 +95,7 @@ export class FunctionButton extends Button{
             });
 
             modeFunction.mode.onBlur.subscribe(() => {
-                this.activeModeFunctions = ArrayUtils.remove(this.activeModeFunctions, modeFunction);
+                Arrays.remove(this.activeModeFunctions, modeFunction);
                 this.activeModeFunction = this.getActiveModeFunction();
                 this.setActiveFunction();
                 this.updateViewText();
@@ -106,7 +106,7 @@ export class FunctionButton extends Button{
     setSingleModes(){
         this.modeFunctions.forEach(mf => {
             mf.mode.singlesModes.forEach(mode => {
-                if(!ArrayUtils.contains(this.singleModes, mode)){
+                if(!Arrays.contains(this.singleModes, mode)){
                     this.singleModes.push(mode);
                 }
             });

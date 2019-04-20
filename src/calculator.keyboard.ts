@@ -1,5 +1,5 @@
 import { Button} from "./button/button";
-import { ModeInit } from "./graphic/mode/mode-init";
+import { ModeConfig } from "./graphic/mode/mode-config";
 import { ModeButton } from "./graphic/mode/mode.button";
 
 export class CalculatorKeyboard {
@@ -10,7 +10,7 @@ export class CalculatorKeyboard {
     operatorsButtons = document.querySelectorAll("[cal-op]") as NodeListOf<HTMLButtonElement>;
 
     modeButtons: ModeButton[] = [];
-    constructor(private modes: ModeInit){
+    constructor(private modes: ModeConfig){
         this.modeButtons = [
             new ModeButton(modes.hypSingleMode, document.querySelector("[cal-hyp-mode]")),
             new ModeButton(modes.radSingleMode, document.querySelector("[cal-rad-mode]")),

@@ -6,15 +6,22 @@ import {Dictionary} from "@everest/collections";
 export class ViewItem {
 
 
-    private tempStyles = new Dictionary<string, string>();
+    protected tempStyles = new Dictionary<string, string>();
 
     /**
      * Creates an view item with a HTMLElement.
      * @param element The target HTMLElement.
      */
-    constructor(public element?: HTMLElement){
+    constructor(public element: HTMLElement){
+        if(!element){
+            throw new Error("Cannot create view item with null HTMLElement")
+        }
     }
 
+    static bind(selector: string): ViewItem{
+        let element = <HTMLElement>document.querySelector(selector);
+        return new ViewItem(element);
+    }
 
     /**
      * Adds a CSS className to the HTMLElement.
@@ -37,11 +44,7 @@ export class ViewItem {
      * @param className The className to add or remove.
      */
     public toggleClass(className: string){
-        if(this.element.classList.contains(className)) {
-            this.element.classList.remove(className);
-        }else {
-            this.element.classList.add(className);
-        }
+        this.element.classList.toggle(className);
     }
 
     /**
@@ -53,7 +56,11 @@ export class ViewItem {
     }
 
     public setStyle(key: string, value: string){
-        this.element.style.setProperty(key, value);
+        this.element.style.setProperty(key, value)
+    }
+
+    public getStyle(key: string){
+        return getComputedStyle(this.element, null).getPropertyValue(key);
     }
 
     /**
@@ -75,8 +82,19 @@ export class ViewItem {
         this.element.style.display = this.tempStyles.get("display");
     }
 
-    public setTextContent(text: string){
+    /**
+     * Sets the text of the element.
+     * @param text Text to set.
+     */
+    public set textContent(text: string){
         this.element.textContent = text;
+    }
+
+    /**
+     * Gets the text of the element.
+     */
+    public get textContent(){
+        return this.element.textContent;
     }
 
     public slideUp(time = 100){
