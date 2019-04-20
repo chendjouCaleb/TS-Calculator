@@ -8,7 +8,7 @@ import {List} from "@everest/collections";
 import {SingleModeButton} from "./single-mode-button";
 import {ViewItem} from "../view-item";
 
-export class GrahicModeKeyboard extends ViewItem{
+export class GraphicKeyboardMode extends ViewItem{
     constructor(public element: HTMLElement, buttons: List<SingleModeButton>) {
         super(element);
     }

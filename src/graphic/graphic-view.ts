@@ -10,7 +10,7 @@ import {GraphicResult} from "./graphic-result";
  * @since 19-04-2019
  */
 export class GraphicView extends ViewItem{
-    constructor(public keyboard: GraphicKeyboard, public input: GraphicInput, public resultView: GraphicResult, element: HTMLElement){
+    constructor(element: HTMLElement, public input: GraphicInput, public resultView: GraphicResult, public keyboard: GraphicKeyboard){
         super(element);
     }
 }

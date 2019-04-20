@@ -22,14 +22,14 @@
             <div class="calculator-result" id="result"></div>
         </div>
 
-        <div class="graphic-keyboard">
-            <div class="graphic-keyboard-mode graphic-keyboard-line">
+        <div class="graphic-keyboard" id="graphic-keyboard">
+            <div class="graphic-keyboard-line" id="graphic-keyboard-mode">
                 <button class="calculator-btn" data-cal-mode="snd">SND</button>
                 <button class="calculator-btn" data-cal-mode="hyp">HYP</button>
                 <button class="calculator-btn" data-cal-mode="sta">STA</button>
             </div>
 
-            <div class="calculator-keyboard-memory calculator-keyboard-line">
+            <div class="calculator-keyboard-line" id="graphic-keyboard-memory">
                 <button class="calculator-btn">MR</button>
                 <button class="calculator-btn">M+</button>
                 <button class="calculator-btn">M</button>
@@ -40,7 +40,7 @@
 
 
         <div class="col-12 calculator-keyboard-mutator">
-            <div class="keyboard-mode-1">
+            <div class="keyboard-mode-1" id="graphic-keyboard-function">
                 <div class="calculator-keyboard-line">
                     <button class="calculator-btn" cal-op-square="^2" cal-val="x²" title="pow"></button>
                     <button class="calculator-btn" cal-op-pow="^" cal-val="y ͯ " title="pow"></button>
@@ -66,7 +66,6 @@
                     <button class="calculator-btn" cal-func="atan" cal-snd-func="atan⁻¹"
                     cal-hyp-func="atanh" cal-snd-hyp-func="atanh⁻¹"></button>
                     </div>
-
             </div>
         </div>
             
