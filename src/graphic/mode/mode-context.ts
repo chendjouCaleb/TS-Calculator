@@ -2,7 +2,7 @@ import {Mode} from "./mode";
 import {SingleMode} from "./single-mode";
 import {CombinedMode} from "./combined-mode";
 import {List} from "@everest/collections";
-import {ElementlreadyExistsError, ElementNotFoundError} from "../../error";
+import {ElementAlreadyExistsError, ElementNotFoundError} from "../../error";
 
 /**
  * Contexte de mode pour la calculatrice graphique.
@@ -53,7 +53,7 @@ export class ModeContext {
             return;
         }
         if (this.singleModes.exists(m => m.name === mode.name)) {
-            throw new ElementlreadyExistsError("Un autre mode existe déjà avec la clé renseignée.")
+            throw new ElementAlreadyExistsError("Un autre mode existe déjà avec la clé renseignée.")
         }
 
         this.singleModes.add(mode);
@@ -70,7 +70,7 @@ export class ModeContext {
         }
 
         if (this.combinedModes.exists(m => m.name === mode.name)) {
-            throw new ElementlreadyExistsError("Un autre mode existe déjà avec la clé renseignée.")
+            throw new ElementAlreadyExistsError("Un autre mode existe déjà avec la clé renseignée.")
         }
 
         this.combinedModes.add(mode);

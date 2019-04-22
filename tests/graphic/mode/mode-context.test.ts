@@ -1,6 +1,6 @@
 import {ModeContext} from "../../../src/graphic/mode/mode-context";
 import {SingleMode} from "../../../src/graphic/mode/single-mode";
-import {ElementlreadyExistsError, ElementNotFoundError} from "../../../src/error";
+import {ElementAlreadyExistsError, ElementNotFoundError} from "../../../src/error";
 import {CombinedMode} from "../../../src/graphic/mode/combined-mode";
 
 test("construct mode context", () => {
@@ -42,7 +42,7 @@ test("try add two single mode with same name", () => {
 
     context.addSingleMode(sndMode);
 
-    expect(() => context.addSingleMode(sndMode1)).toThrow(ElementlreadyExistsError);
+    expect(() => context.addSingleMode(sndMode1)).toThrow(ElementAlreadyExistsError);
 
     expect(context.combinedModes.size).toBe(0);
     expect(context.singleModes.size).toBe(1);
@@ -99,7 +99,7 @@ test("try add two combined mode with same name", () => {
 
     context.addCombinedMode(mode1);
 
-    expect(() => context.addCombinedMode(mode2)).toThrow(ElementlreadyExistsError);
+    expect(() => context.addCombinedMode(mode2)).toThrow(ElementAlreadyExistsError);
 
     expect(context.combinedModes.size).toBe(1);
     expect(context.singleModes.size).toBe(0);

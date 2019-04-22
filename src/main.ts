@@ -1,5 +1,4 @@
 import {GraphicContext} from "./graphic/graphic-context";
-import {ViewItem} from "./view-item";
 import {ModeConfig} from "./graphic/mode/mode-config";
 import {SingleModeButton} from "./graphic/single-mode-button";
 import {GraphicInput} from "./graphic/graphic-input";
@@ -10,12 +9,14 @@ import {GraphicKeyboardMode} from "./graphic/graphic-keyboard-mode";
 import {List} from "@everest/collections";
 import {GraphicKeyboardMemory} from "./graphic/graphic-keyboard-memory";
 import {GraphicKeyboardFunction} from "./graphic/graphic-keyboard-function";
-import {FunctionButton} from "./graphic/function-button";
+import {ButtonSymbol} from "./graphic/button-symbol";
+import {SymbolContainer} from "./symbol-container";
+import {SymbolMode} from "./graphic/symbol-mode";
+import {ButtonFunctionStartup} from "./graphic/startup/button-function-startup";
 
 let graphicViewElement = <HTMLElement>document.querySelector("#graphic-view");
 let input = document.getElementById("calculator-input-field");
 let resultDiv = document.getElementById("result");
-let error = document.getElementById("error");
 
 
 
@@ -39,7 +40,11 @@ let graphicKeyBoardMode = new GraphicKeyboardMode(document.getElementById("graph
 
 let memoryKeyboard = new GraphicKeyboardMemory(document.getElementById("graphic-keyboard-memory"));
 
-let functionButtons = new List<FunctionButton>();
+
+let symbols = new SymbolContainer();
+symbols.addDefaultSymbol();
+
+let functionButtons = new ButtonFunctionStartup(symbols, modeContext).loadFunctionsButtons();
 let functionKeyboard = new GraphicKeyboardFunction(document.getElementById("graphic-keyboard-function"), functionButtons);
 let graphicKeyboard = new GraphicKeyboard(document.getElementById("graphic-keyboard"), graphicKeyBoardMode, memoryKeyboard, functionKeyboard);
 

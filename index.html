@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <title>Calculatrice</title>
     <style>
-        
-        .calc{
+
+        .calc {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             width: 300px;
             border: 1px solid #777777;
@@ -16,107 +16,113 @@
     </style>
 </head>
 <body>
-    <div class="calculator-graphic" id="graphic-view">
-        <div class="graphic-screen">
-            <div contenteditable class="calculator-input" id="calculator-input-field"></div>
-            <div class="calculator-result" id="result"></div>
+<div class="calculator-graphic" id="graphic-view">
+    <div class="graphic-screen">
+        <div contenteditable class="calculator-input" id="calculator-input-field"></div>
+        <div class="calculator-result" id="result"></div>
+    </div>
+
+    <div class="graphic-keyboard" id="graphic-keyboard">
+        <div class="graphic-keyboard-line" id="graphic-keyboard-mode">
+            <button class="calculator-btn" data-cal-mode="snd">SND</button>
+            <button class="calculator-btn" data-cal-mode="hyp">HYP</button>
+            <button class="calculator-btn" data-cal-mode="sta">STA</button>
         </div>
 
-        <div class="graphic-keyboard" id="graphic-keyboard">
-            <div class="graphic-keyboard-line" id="graphic-keyboard-mode">
-                <button class="calculator-btn" data-cal-mode="snd">SND</button>
-                <button class="calculator-btn" data-cal-mode="hyp">HYP</button>
-                <button class="calculator-btn" data-cal-mode="sta">STA</button>
-            </div>
-
-            <div class="calculator-keyboard-line" id="graphic-keyboard-memory">
-                <button class="calculator-btn">MR</button>
-                <button class="calculator-btn">M+</button>
-                <button class="calculator-btn">M</button>
-                <button class="calculator-btn">V</button>
-                <button class="calculator-btn">F</button>
-            </div>
-
+        <div class="calculator-keyboard-line" id="graphic-keyboard-memory">
+            <button class="calculator-btn">MR</button>
+            <button class="calculator-btn">M+</button>
+            <button class="calculator-btn">M</button>
+            <button class="calculator-btn">V</button>
+            <button class="calculator-btn">F</button>
+        </div>
 
 
         <div class="col-12 calculator-keyboard-mutator">
             <div class="keyboard-mode-1" id="graphic-keyboard-function">
                 <div class="calculator-keyboard-line">
-                    <button class="calculator-btn" cal-op-square="^2" cal-val="x²" title="pow"></button>
-                    <button class="calculator-btn" cal-op-pow="^" cal-val="y ͯ " title="pow"></button>
-                    <button class="calculator-btn" cal-func-sin></button>
-                    <button class="calculator-btn" cal-func-cos></button>
-                    <button class="calculator-btn" cal-func-tan></button>
+                    <button class="calculator-btn" data-cal-func data-cal-func-norm="x²"></button>
+                    <button class="calculator-btn" data-cal-func-norm="^"></button>
+                    <button class="calculator-btn" data-cal-func data-cal-func-norm="sin"
+                            data-cal-func-snd="sin⁻¹"
+                            data-cal-func-hyp="sinh"
+                            data-cal-func-sndHyp="sinh⁻¹"
+                    ></button>
+                    <button class="calculator-btn" data-cal-func data-cal-func-norm="cos"
+                            data-cal-func-snd="cos⁻¹"
+                            data-cal-func-hyp="cosh"
+                            data-cal-func-sndHyp="cosh⁻¹"
+                    ></button>
+                    <button class="calculator-btn" data-cal-func data-cal-func-norm="tan"
+                            data-cal-func-snd="tan⁻¹"
+                            data-cal-func-hyp="tanh"
+                            data-cal-func-sndHyp="tanh⁻¹"></button>
                 </div>
-    
-                <div class="calculator-keyboard-line">
-                    <button class="calculator-btn" cal-func="√" title="sqrt"></button>
-                    <button class="calculator-btn" cal-dsp="10 ͯ ">*º®</button>
-                    <button class="calculator-btn" cal-func="log" cal-snd-func="log&#8339"></button>
-                    <button class="calculator-btn" cal-func="e&#8300"></button>
-                    <button class="calculator-btn" cal-func="ln"></button>
-                </div>
-                <div class="calculator-keyboard-line">
-                        <button class="calculator-btn" cal-op="^3" cal-val="x³"></button>
-                        <button class="calculator-btn" cal-func="E"></button>
-                        <button class="calculator-btn" cal-func="asin" cal-snd-func="asin⁻¹"
-                    cal-hyp-func="asinh" cal-snd-hyp-func="asinh⁻¹"></button>
-                    <button class="calculator-btn" cal-func="acos" cal-snd-func="acos⁻¹"
-                    cal-hyp-func="acosh" cal-snd-hyp-func="acosh⁻¹"></button>
-                    <button class="calculator-btn" cal-func="atan" cal-snd-func="atan⁻¹"
-                    cal-hyp-func="atanh" cal-snd-hyp-func="atanh⁻¹"></button>
-                    </div>
-            </div>
-        </div>
-            
-            
-        
-                <div class="calculator-keyboard-line">
-                    <button class="calculator-btn" id="keyboard-mode-changer">↑</button>
-                    <button class="calculator-btn">CE</button>
-                    <button class="calculator-btn">C</button>
-                    <button class="calculator-btn">⇦</button>
-                    <button class="calculator-btn">÷</button>
-                </div>
-                <div class="calculator-keyboard-line">
-                    <button class="calculator-btn calculator-btn-number" number-val="π">π</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="7">7</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="8">8</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="9">9</button>
-                    <button class="calculator-btn">×</button>
-                </div>
-                
-                <div class="calculator-keyboard-line">
-                    <button class="calculator-btn" calculator-btn-number number-val="e"><i>e</i></button>
-                    <button class="calculator-btn calculator-btn-number" number-val="4">4</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="5">5</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="6">6</button>
-                    <button class="calculator-btn calculator-btn-operator">−</button>
-                </div>
-                
-                <div class="calculator-keyboard-line">
-                    <button class="calculator-btn" style="transform:rotateX(0.5rad)">±</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="1">1</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="5">2</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="3">3</button>
-                    <button class="calculator-btn">+</button>
-                </div>
-                
-        
-                <div class="calculator-keyboard-line">
-                    <button class="calculator-btn">(</button>
-                    <button class="calculator-btn">)</button>
-                    <button class="calculator-btn calculator-btn-number" number-val="0">0</button>
-                    <button class="calculator-btn calculator-btn-number">.</button>
-                    <button class="calculator-btn">=</button>
-                </div>
-                
-        
-            </div>
-        </div>
-        
-    </div>
 
-        <script src="/bundle.js"></script>
+                <div class="calculator-keyboard-line">
+                    <button class="calculator-btn" data-cal-func data-cal-func-norm="√"></button>
+                    <button class="calculator-btn" cal-dsp="10 ͯ ">*º®</button>
+                    <button class="calculator-btn" ></button>
+                    <button class="calculator-btn" cal-func="e&#8300"></button>
+                    <button class="calculator-btn" ></button>
+                </div>
+                <div class="calculator-keyboard-line">
+                    <button class="calculator-btn" data-cal-func data-cal-func-norm="x³"></button>
+                    <button class="calculator-btn" data-cal-func-norm="E"></button>
+                    <button class="calculator-btn" data-cal-func-norm="asin"></button>
+                    <button class="calculator-btn" data-cal-func-norm="acos"></button>
+                    <button class="calculator-btn" data-cal-func-norm="atan"></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="calculator-keyboard-line">
+            <button class="calculator-btn" id="keyboard-mode-changer">↑</button>
+            <button class="calculator-btn">CE</button>
+            <button class="calculator-btn">C</button>
+            <button class="calculator-btn">⇦</button>
+            <button class="calculator-btn">÷</button>
+        </div>
+        <div class="calculator-keyboard-line">
+            <button class="calculator-btn calculator-btn-number" number-val="π">π</button>
+            <button class="calculator-btn calculator-btn-number" number-val="7">7</button>
+            <button class="calculator-btn calculator-btn-number" number-val="8">8</button>
+            <button class="calculator-btn calculator-btn-number" number-val="9">9</button>
+            <button class="calculator-btn">×</button>
+        </div>
+
+        <div class="calculator-keyboard-line">
+            <button class="calculator-btn" calculator-btn-number number-val="e"><i>e</i></button>
+            <button class="calculator-btn calculator-btn-number" number-val="4">4</button>
+            <button class="calculator-btn calculator-btn-number" number-val="5">5</button>
+            <button class="calculator-btn calculator-btn-number" number-val="6">6</button>
+            <button class="calculator-btn calculator-btn-operator">−</button>
+        </div>
+
+        <div class="calculator-keyboard-line">
+            <button class="calculator-btn" style="transform:rotateX(0.5rad)">±</button>
+            <button class="calculator-btn calculator-btn-number" number-val="1">1</button>
+            <button class="calculator-btn calculator-btn-number" number-val="5">2</button>
+            <button class="calculator-btn calculator-btn-number" number-val="3">3</button>
+            <button class="calculator-btn">+</button>
+        </div>
+
+
+        <div class="calculator-keyboard-line">
+            <button class="calculator-btn">(</button>
+            <button class="calculator-btn">)</button>
+            <button class="calculator-btn calculator-btn-number" number-val="0">0</button>
+            <button class="calculator-btn calculator-btn-number">.</button>
+            <button class="calculator-btn">=</button>
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+
+<script src="/bundle.js"></script>
 </body>
 </html>

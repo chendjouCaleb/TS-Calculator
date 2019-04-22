@@ -1,6 +1,6 @@
 
 import {List} from "@everest/collections";
-import {FunctionButton} from "./function-button";
+import {ButtonSymbol} from "./button-symbol";
 import {ViewItem} from "../view-item";
 
 /**
@@ -10,7 +10,7 @@ import {ViewItem} from "../view-item";
  * @since 20-04-2019
  */
 export class GraphicKeyboardFunction extends ViewItem{
-    constructor(public element: HTMLElement, buttons: List<FunctionButton>) {
+    constructor(public element: HTMLElement, buttons: List<ButtonSymbol>) {
         super(element);
     }
 }

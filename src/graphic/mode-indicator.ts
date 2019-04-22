@@ -1,8 +1,14 @@
-import { ActiveModeIndicator } from "./active.mode.indicator";
-import { SingleMode } from "../graphic/mode/single-mode";
+/**
+ * Element permettant d'indiquer qu'un mode est activé pour un bouton.
+ * @version 1
+ * @author Chendjou deGrace
+ * @since 21-04-2019
+ */
+import {ViewItem} from "../view-item";
+import {SingleMode} from "./mode/single-mode";
 
-export class ActiveModeIndicatorBuilder{
-    build(mode: SingleMode): ActiveModeIndicator{
+export class ModeIndicator extends ViewItem{
+    constructor(mode: SingleMode) {
         let indicatorHTML = document.createElement("span");
         //this.HTML.innerText = this.name;
         indicatorHTML.style.color = mode.activeColor;
@@ -11,9 +17,6 @@ export class ActiveModeIndicatorBuilder{
         indicatorHTML.className = "cal-btn-mode-item";
         indicatorHTML.innerHTML = "";
 
-        let modeIndicator = new ActiveModeIndicator(indicatorHTML, mode);
-        modeIndicator.hide();
-        
-        return modeIndicator;
+        super(indicatorHTML)
     }
 }

@@ -1,6 +1,4 @@
-/**
- * Context pour la partie graphique de la calculatrice.
- */
+
 import {ModeContext} from "./mode/mode-context";
 import {GraphicView} from "./graphic-view";
 
